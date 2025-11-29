@@ -1,0 +1,137 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Create a post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a post": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-29T17:14:25.592Z",
+  "id": "lATEIxbt59ZSDdb4",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] Subir imagenes  a Wordpress",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        -112
+      ],
+      "id": "ed4f4e69-4b80-4579-98f8-e6b5e6e8567a",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        -112
+      ],
+      "id": "a2e845d3-5e82-474d-bdd5-11eb962cfa9b",
+      "name": "Create a post"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        16,
+        -112
+      ],
+      "id": "18cb8a44-81b4-43f8-8f96-4adcdecef898",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        224,
+        -112
+      ],
+      "id": "0ffdaa38-cd2e-4b43-b550-860fa16d8e3f",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        432,
+        -112
+      ],
+      "id": "1c5ccb70-b4a2-485c-a586-c589990fa4fd",
+      "name": "HTTP Request2"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-29T17:14:25.594Z",
+      "createdAt": "2025-11-29T17:14:25.594Z",
+      "role": "workflow:owner",
+      "workflowId": "lATEIxbt59ZSDdb4",
+      "projectId": "dd1J8VWcDhhyZ68g"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-29T17:14:32.000Z",
+  "versionId": "72e41ee4-95c3-4779-9ba1-9a80244480f6"
+}
