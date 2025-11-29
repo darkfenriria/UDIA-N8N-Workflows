@@ -1,0 +1,113 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-29T10:04:03.401Z",
+  "id": "TjDvdwmMgidOLVOG",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] HTTPRequest",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "aa86279d-a0b1-4110-8a4a-00c997bdb60b",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-rapidapi-host",
+              "value": "exercisedb.p.rapidapi.com"
+            },
+            {
+              "name": "x-rapidapi-key",
+              "value": "5648fbcc0amshcfda3d01cb9cb72p1d279ajsna5ce4b7ff1d7"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        432,
+        0
+      ],
+      "id": "3bd0a2e7-16d4-4e07-b9f8-4beca8047f04",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3e71cbf7-4056-4f3d-b9d7-76a69a64ffa3",
+              "name": "url",
+              "value": "https://exercisedb.p.rapidapi.com/exercises ",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "a3c82d4e-cdea-4afd-b23c-60d575dcb09b",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-29T10:04:03.406Z",
+      "createdAt": "2025-11-29T10:04:03.406Z",
+      "role": "workflow:owner",
+      "workflowId": "TjDvdwmMgidOLVOG",
+      "projectId": "dd1J8VWcDhhyZ68g"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-29T10:13:20.000Z",
+  "versionId": "29574668-2adb-4a1f-9f39-65562903ef7a"
+}
