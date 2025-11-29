@@ -1,0 +1,349 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API GOOGLE": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-29T11:16:24.092Z",
+  "id": "M5OQ9MWwOsPx44K9",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] Agentes de Ia con memoria y tools",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -336,
+        -16
+      ],
+      "id": "09388110-ea09-4cd0-bf64-1e0ea513360b",
+      "name": "When chat message received",
+      "webhookId": "ffe0e342-96a3-405f-8c91-92b80a778bf8"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1x-HG9grUi-r_qm1w4nky1GE44oBEodsmTN9xDAFzVfE/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1x-HG9grUi-r_qm1w4nky1GE44oBEodsmTN9xDAFzVfE/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Busqueda": "={{ $json.chatInput }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Busqueda",
+              "displayName": "Busqueda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Respuesta",
+              "displayName": "Respuesta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -128,
+        -16
+      ],
+      "id": "4b142c5a-b1c1-4fe2-ac9c-265330b44306",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "bLiUTF6GxoUZWkJp",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When chat message received').item.json.chatInput }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Eres un asistente que me ayuda a buscar en gogle con la herramienta: API GOOGLE todas las URL de la busqueda quete pida por chat el usuario.\n\nSiempre contestaras únicamente el listado de urls que venga de la herramienta API GOOGLE"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        80,
+        -16
+      ],
+      "id": "52042d4d-e736-40fc-b9d5-14365f7e672f",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-001",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        176
+      ],
+      "id": "a7aa581d-132e-49a2-aaf8-99db1ed16064",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "jwJIXFT2DIMZxxTt",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('When chat message received').item.json.sessionId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        64,
+        176
+      ],
+      "id": "3fc4d0f9-0ccc-4683-9a96-c1c76de3f0c0",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Esta tool busca en google usando los terminos que indica el usuario",
+        "url": "https://real-time-web-search.p.rapidapi.com/search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters0_Value', ``, 'string') }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-rapidapi-host",
+              "value": "real-time-web-search.p.rapidapi.com"
+            },
+            {
+              "name": "x-rapidapi-key",
+              "value": "5648fbcc0amshcfda3d01cb9cb72p1d279ajsna5ce4b7ff1d7"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        208,
+        176
+      ],
+      "id": "2596cbf2-f0f9-4444-a97f-494bf9d56875",
+      "name": "API GOOGLE"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"resultados\": [\n    {\n      \"nombre\": \"Nombre de la Web 1\",\n      \"url\": \"https://miweb1.com\"\n    },\n    {\n      \"nombre\": \"Nombre de la Web 2\",\n      \"url\": \"https://miweb2.com\"\n    },\n    {\n      \"nombre\": \"Nombre de la Web 3\",\n      \"url\": \"https://miweb3.com\"\n    }\n  ]\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        352,
+        176
+      ],
+      "id": "6b73d416-dd48-4210-8fbd-de858902bea1",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1x-HG9grUi-r_qm1w4nky1GE44oBEodsmTN9xDAFzVfE/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1x-HG9grUi-r_qm1w4nky1GE44oBEodsmTN9xDAFzVfE/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Busqueda": "={{ $('Append row in sheet').item.json.Busqueda }}",
+            "Respuesta": "={{ $json.output.resultados }}"
+          },
+          "matchingColumns": [
+            "Busqueda"
+          ],
+          "schema": [
+            {
+              "id": "Busqueda",
+              "displayName": "Busqueda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Respuesta",
+              "displayName": "Respuesta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        432,
+        -16
+      ],
+      "id": "3cf64bf7-9859-4883-842d-b9b2f02bd611",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "bLiUTF6GxoUZWkJp",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-29T11:16:24.094Z",
+      "createdAt": "2025-11-29T11:16:24.094Z",
+      "role": "workflow:owner",
+      "workflowId": "M5OQ9MWwOsPx44K9",
+      "projectId": "dd1J8VWcDhhyZ68g"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-29T15:12:29.000Z",
+  "versionId": "64ca828a-0484-41a5-bf81-b699e2643f82"
+}
