@@ -1,0 +1,46 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-11-29T11:07:41.957Z",
+  "id": "agmuZ0QSTlC2r7pa",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] Webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "udiasecurity",
+        "authentication": "basicAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "905f01e3-dfb6-479a-9e99-cfc5667e8bbb",
+      "name": "Webhook",
+      "webhookId": "c0474896-70c4-4a51-88fa-e035aa750bc2"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-29T11:07:41.963Z",
+      "createdAt": "2025-11-29T11:07:41.963Z",
+      "role": "workflow:owner",
+      "workflowId": "agmuZ0QSTlC2r7pa",
+      "projectId": "dd1J8VWcDhhyZ68g"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-29T11:09:20.000Z",
+  "versionId": "37e0bd14-1bfa-4ce5-832f-4dd26fafaad6"
+}
