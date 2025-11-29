@@ -1,0 +1,90 @@
+{
+  "active": false,
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-29T10:13:45.527Z",
+  "id": "k0r09tn6qSTJ9mIq",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[UDIA] Telegram Errores",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "511778dd-b9da-46d8-96cc-aa4b1793eb68",
+      "name": "Telegram Trigger",
+      "webhookId": "8b00608b-ae36-4b5d-aee7-9e23b0234d03",
+      "credentials": {
+        "telegramApi": {
+          "id": "kxNY8cQlxk4k6qMP",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.message.chat.id }}",
+        "text": "=El missatge enviat es:  {{ $json.message.text }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "ea7800e4-d8f4-44c9-a48c-128442859693",
+      "name": "Send a text message",
+      "webhookId": "ba529bc1-fe0c-4e56-b551-f7acc7870183",
+      "credentials": {
+        "telegramApi": {
+          "id": "kxNY8cQlxk4k6qMP",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-29T10:13:45.530Z",
+      "createdAt": "2025-11-29T10:13:45.530Z",
+      "role": "workflow:owner",
+      "workflowId": "k0r09tn6qSTJ9mIq",
+      "projectId": "dd1J8VWcDhhyZ68g"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-29T10:19:05.000Z",
+  "versionId": "0ed5a751-1cfa-4a21-9c0a-f835bc1f658d"
+}
