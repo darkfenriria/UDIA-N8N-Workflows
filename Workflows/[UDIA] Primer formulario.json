@@ -1,0 +1,156 @@
+{
+  "active": false,
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-29T09:52:35.537Z",
+  "id": "GEzOQAjFVLhKLrpn",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[UDIA] Primer formulario",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Newsletter IA",
+        "formDescription": "Le sulties noticies de IA en el teu mail",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Nombre",
+              "placeholder": "Aqui tu Nombre",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Email",
+              "fieldType": "email",
+              "placeholder": "Aqui tu Email",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Politica de privacidad",
+              "fieldType": "checkbox",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Aceptar la política de privacidad"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "733454d7-7514-43d5-8878-565b8f857bfe",
+      "name": "On form submission",
+      "webhookId": "8f4a6271-cd41-47ff-abd6-324637117f29"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1Dw4hv1C6A29PKl52N4J32BSozYcVihIRYDFAYzNZBg0",
+          "mode": "list",
+          "cachedResultName": "UDIA | Primer flujo simple",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Dw4hv1C6A29PKl52N4J32BSozYcVihIRYDFAYzNZBg0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Dw4hv1C6A29PKl52N4J32BSozYcVihIRYDFAYzNZBg0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre": "={{ $json.Nombre }}",
+            "Email": "={{ $json.Email }}"
+          },
+          "matchingColumns": [
+            "Email"
+          ],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "0c6307db-6123-48a3-848e-11deed724ed8",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "bLiUTF6GxoUZWkJp",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-29T09:52:35.547Z",
+      "createdAt": "2025-11-29T09:52:35.547Z",
+      "role": "workflow:owner",
+      "workflowId": "GEzOQAjFVLhKLrpn",
+      "projectId": "dd1J8VWcDhhyZ68g"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-29T10:03:24.000Z",
+  "versionId": "a9fc33a8-b712-41fa-8d43-0df93d5b0de4"
+}
