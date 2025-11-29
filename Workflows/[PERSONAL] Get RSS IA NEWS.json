@@ -1,0 +1,405 @@
+{
+  "active": false,
+  "connections": {
+    "arstechnica": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "techcrunch": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "venturebeat": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nvidia": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 5
+          }
+        ]
+      ]
+    },
+    "Google research": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 6
+          }
+        ]
+      ]
+    },
+    "MIT AI": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "MIT Machine Learning": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 7
+          }
+        ]
+      ]
+    },
+    "Open AI": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "venturebeat",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "techcrunch",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "MIT AI",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "arstechnica",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Open AI",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Nvidia",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Google research",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "MIT Machine Learning",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-29T10:29:03.206Z",
+  "id": "owcAFN23yNEk8XgJ",
+  "isArchived": false,
+  "meta": null,
+  "name": "[PERSONAL] Get RSS IA NEWS",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "http://feeds.arstechnica.com/arstechnica/technology-lab",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -176,
+        560
+      ],
+      "id": "37e0cae0-1fde-42e2-b592-9d1e79dee58b",
+      "name": "arstechnica",
+      "executeOnce": false,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "url": "https://techcrunch.com/tag/artificial-intelligence/feed/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -176,
+        176
+      ],
+      "id": "31884296-1860-4217-a20e-660f36006526",
+      "name": "techcrunch"
+    },
+    {
+      "parameters": {
+        "url": "https://venturebeat.com/category/ai/feed/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -176,
+        -16
+      ],
+      "id": "d597f376-ccb8-4911-9baf-7468eb5c5461",
+      "name": "venturebeat"
+    },
+    {
+      "parameters": {
+        "url": "https://feeds.feedburner.com/nvidiablog",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -176,
+        944
+      ],
+      "id": "80454f0e-1a80-4ac3-9403-8006229c37be",
+      "name": "Nvidia"
+    },
+    {
+      "parameters": {
+        "url": "https://research.google/blog/rss/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -176,
+        1136
+      ],
+      "id": "c0396044-46c8-4672-aac2-d263919e1ea4",
+      "name": "Google research"
+    },
+    {
+      "parameters": {
+        "url": "https://news.mit.edu/topic/mitartificial-intelligence2-rss.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -176,
+        368
+      ],
+      "id": "04f1257f-808c-4472-a0b8-ad6236ac50a0",
+      "name": "MIT AI"
+    },
+    {
+      "parameters": {
+        "url": "https://news.mit.edu/topic/mitmachine-learning-rss.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -176,
+        1328
+      ],
+      "id": "960bb113-8b3d-4a96-97e1-067e6b4e3ec2",
+      "name": "MIT Machine Learning"
+    },
+    {
+      "parameters": {
+        "url": "https://openai.com/news/rss.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -176,
+        752
+      ],
+      "id": "ac0d4559-7d9f-432f-99d8-32496ceb9e9a",
+      "name": "Open AI"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b60fc6ab-87bb-4a6b-9298-873b9c7e61ad",
+              "leftValue": "={{ $json.pubDate }}",
+              "rightValue": "={{ $('Date & Time1').item.json.newDate }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        272,
+        656
+      ],
+      "id": "88cfdf52-2351-4f4f-8c52-7f0b50dae1bc",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "numberInputs": 8
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        48,
+        560
+      ],
+      "id": "45c7b5ad-85b3-42bf-8b2a-bb6fc401e756",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -624,
+        656
+      ],
+      "id": "93349723-2b53-42b1-a7ca-f348afaf8197",
+      "name": "Date & Time"
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.currentDate }}",
+        "duration": 7,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -400,
+        656
+      ],
+      "id": "6c065da4-a26e-441b-9330-dd4b7cfbaa18",
+      "name": "Date & Time1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 19
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -816,
+        656
+      ],
+      "id": "dad2a47b-d37b-41a2-85b2-a1d8fd920e3d",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-29T10:29:03.216Z",
+      "createdAt": "2025-11-29T10:29:03.216Z",
+      "role": "workflow:owner",
+      "workflowId": "owcAFN23yNEk8XgJ",
+      "projectId": "dd1J8VWcDhhyZ68g"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-29T10:29:14.000Z",
+  "versionId": "7e625f40-5006-49fe-a3b1-fb3bcf1219f0"
+}
