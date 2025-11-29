@@ -1,0 +1,111 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-29T10:44:14.246Z",
+  "id": "6bJDYVdhz78ORNm2",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] Functions",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -624,
+        176
+      ],
+      "id": "eb66ffef-93be-4d34-8ceb-34b77afca86c",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://www.techradar.com/rss",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -416,
+        176
+      ],
+      "id": "e8e18339-2c21-4e93-b0d9-b101bdf041c6",
+      "name": "RSS Read"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nreturn items.map(item => {\n  const newItem = { ...item.json };\n\n  if (newItem.enclosure && newItem.enclosure.url) {\n    newItem.image = newItem.enclosure.url;\n  }\n\n  return {json : newItem};\n})"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -208,
+        80
+      ],
+      "id": "1f145654-2a8f-4e86-abc6-eef3b21ec3aa",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nreturn items.map(item  => {\n  const newItem = { ...item.json };\n\n  if (newItem.title && newItem.title.toLowerCase().includes(\"intelligence\")) {\n    newItem.title = `UDIA: ${newItem.title}`;\n  }\n\n  return { json: newItem };\n})"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -208,
+        256
+      ],
+      "id": "6ff8f006-3023-42c0-9d78-2f69ee61a3e9",
+      "name": "Code1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false,
+    "errorWorkflow": "ujSgjyWOqfSANqhv"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-29T10:44:14.248Z",
+      "createdAt": "2025-11-29T10:44:14.248Z",
+      "role": "workflow:owner",
+      "workflowId": "6bJDYVdhz78ORNm2",
+      "projectId": "dd1J8VWcDhhyZ68g"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-29T10:48:38.000Z",
+  "versionId": "5a15f2a2-b9e9-4322-a571-88b5d2d095b3"
+}
