@@ -1,0 +1,161 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-29T10:23:07.306Z",
+  "id": "UMYNH9irjnhXCnXj",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] IF && Switch",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d5fc7cd6-25e3-4e59-aef2-ecd1530a0751",
+      "name": "When chat message received",
+      "webhookId": "009625b1-2a3b-4a2c-9066-333a603ad9ec"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5524579a-cda6-41ac-b967-1623c0b9229f",
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "Hola",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "52357f63-ea3b-4366-9400-30ea9fe9deab",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.chatInput }}",
+                    "rightValue": "Holaa",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "6ca45075-33a1-4c2e-ba3d-4a46aa85d2ba"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "43c06aff-04ba-4faf-9469-03843bbae6e6",
+                    "leftValue": "={{ $json.chatInput }}",
+                    "rightValue": "Holiii",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        480,
+        16
+      ],
+      "id": "732f1e6b-0bc2-40f8-8e26-2d3145a77d07",
+      "name": "Switch"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-29T10:23:07.311Z",
+      "createdAt": "2025-11-29T10:23:07.311Z",
+      "role": "workflow:owner",
+      "workflowId": "UMYNH9irjnhXCnXj",
+      "projectId": "dd1J8VWcDhhyZ68g"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-29T10:27:41.000Z",
+  "versionId": "e62c11ed-6595-45f3-8333-2938efe521ed"
+}
